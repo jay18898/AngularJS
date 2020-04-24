@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="./Scripts/script.js"></script>
+    <style>
+        th {
+
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #c1c1c1;
+            color: black;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="employeeController">
+        <label for="column">Sort By:</label>
+        <select id="column" ng-model="sortColumn">
+            <option value="name">Name ASC</option>
+            <option value="-name">Name DESC</option>
+            <option value="dateOfBirth">Date Of Birth ASC</option>
+            <option value="gender">Gender</option>
+            <option value="+salary">Salary ASC</option>
+            <option value="-salary">Salary DESC</option>
+
+        </select>
+        <br /><br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DoB</th>
+                    <th>Gender</th>
+                    <th>Salary(currency)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | orderBy: sortColumn">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+                    <td>{{employee.gender | lowercase}}</td>
+                    <td>{{employee.salary | currency:'₹'}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
