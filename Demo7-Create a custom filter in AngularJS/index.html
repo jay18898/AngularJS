@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="./Scripts/script.js"></script>
+    <script src="./Scripts/filters.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        th {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+            background-color: #c1c1c1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="employeeController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DoB</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+                    <td>{{employee.gender | gender}}</td>
+                    <td>{{employee.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
