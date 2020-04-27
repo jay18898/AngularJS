@@ -2,7 +2,7 @@ app.factory("stringService", function () {
     return {
         processString: function (input) {
             if (!input) {
-                return true;
+                return '';
             }
             var output = '';
             for (var i = 0; i < input.length; i++) {
